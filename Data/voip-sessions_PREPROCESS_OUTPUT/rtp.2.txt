@@ -1,0 +1,50 @@
+ + rtpbreak v1.3a running here!
+ + pid: 5648, date/time: 20/03/2021#12:58:05
+ + Configuration
+   + INPUT
+     Packet source: iface 'ens33'
+     Force datalink header length: disabled
+   + OUTPUT
+     Output directory: '/home/eden/Desktop/rtpbreak outputs'
+     RTP raw dumps: enabled
+     RTP pcap dumps: enabled
+     Fill gaps: disabled
+     Dump noise: disabled
+     Logfile: '/home/eden/Desktop/rtpbreak outputs/rtp.2.txt'
+     Logging to stdout: enabled
+     Logging to syslog: disabled
+     Be verbose: disabled
+   + SELECT
+     Sniff packets in promisc mode: disabled
+     Add pcap filter: disabled
+     Expecting even destination UDP port: disabled
+     Expecting unprivileged source/destination UDP ports: disabled
+     Expecting RTP payload type: any
+     Expecting RTP payload length: any
+     Packet timeout: 10.00 seconds
+     Pattern timeout: 0.25 seconds
+     Pattern packets: 5
+   + EXECUTION
+     Running as user/group: root/root
+     Running daemonized: disabled
+ * You can dump stats sending me a SIGUSR2 signal
+ * Reading packets...
+open di /home/eden/Desktop/rtpbreak outputs/rtp.2.0.txt
+ ! [rtp0] detected: pt=0(g711U) 212.150.158.100:13596 => 192.168.25.128:8000
+open di /home/eden/Desktop/rtpbreak outputs/rtp.2.1.txt
+ ! [rtp1] detected: pt=0(g711U) 192.168.25.128:8000 => 212.150.158.100:13596
+ * [rtp1] probable reverse RTP stream: [rtp0]
+ * [rtp0] closed: packets inbuffer=0 flushed=1682 lost=9(0.53%), call_length=0m34s
+ * [rtp1] closed: packets inbuffer=0 flushed=1692 lost=0(0.00%), call_length=0m34s
+--
+Caught SIGINT signal (2), cleaning up...
+--
+ + Status
+   Alive RTP Sessions: 0
+   Closed RTP Sessions: 2
+   Detected RTP Sessions: 2
+   Flushed RTP packets: 3374
+   Lost RTP packets: 9 (0.27%)
+   Noise (false positive) packets: 18
+ + No active RTP streams
+
