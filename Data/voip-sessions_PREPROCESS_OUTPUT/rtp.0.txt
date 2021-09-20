@@ -1,4 +1,0 @@
---
-20/03/2021#12:55:40 Fatal error at main.c:517:init_opt: pcap_open_live(): eth0: SIOCETHTOOL(ETHTOOL_GET_TS_INFO) ioctl failed: No such device; exit forced.
---
-

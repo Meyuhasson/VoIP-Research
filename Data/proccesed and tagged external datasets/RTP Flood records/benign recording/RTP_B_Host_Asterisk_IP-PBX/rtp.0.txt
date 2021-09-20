@@ -1,0 +1,152 @@
+ + rtpbreak v1.3a running here!
+ + pid: 6228, date/time: 19/09/2021#16:22:13
+ + Configuration
+   + INPUT
+     Packet source: rxfile '/home/eden/Desktop/VoIP external datasets/RTP Flood records/RTP_B_Host_Asterisk_IP-PBX.pcap'
+     Force datalink header length: disabled
+   + OUTPUT
+     Output directory: '/home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX'
+     RTP raw dumps: enabled
+     RTP pcap dumps: enabled
+     Fill gaps: disabled
+     Dump noise: disabled
+     Logfile: '/home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.txt'
+     Logging to stdout: enabled
+     Logging to syslog: disabled
+     Be verbose: disabled
+   + SELECT
+     Sniff packets in promisc mode: disabled
+     Add pcap filter: disabled
+     Expecting even destination UDP port: disabled
+     Expecting unprivileged source/destination UDP ports: disabled
+     Expecting RTP payload type: any
+     Expecting RTP payload length: any
+     Packet timeout: 10.00 seconds
+     Pattern timeout: 0.25 seconds
+     Pattern packets: 5
+   + EXECUTION
+     Running as user/group: root/root
+     Running daemonized: disabled
+ * You can dump stats sending me a SIGUSR2 signal
+ * Reading packets...
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.0.txt
+ ! [rtp0] detected: pt=0(g711U) 10.10.10.22:7078 => 192.168.1.127:17676
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.1.txt
+ ! [rtp1] detected: pt=0(g711U) 192.168.1.127:30104 => 10.10.10.38:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.2.txt
+ ! [rtp2] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:30104
+ * [rtp2] probable reverse RTP stream: [rtp1]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.3.txt
+ ! [rtp3] detected: pt=0(g711U) 192.168.1.127:17676 => 10.10.10.22:7078
+ * [rtp3] probable reverse RTP stream: [rtp0]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.4.txt
+ ! [rtp4] detected: pt=0(g711U) 10.10.10.39:7078 => 192.168.1.127:10476
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.5.txt
+ ! [rtp5] detected: pt=0(g711U) 10.10.10.34:7078 => 192.168.1.127:19812
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.6.txt
+ ! [rtp6] detected: pt=0(g711U) 192.168.1.127:19812 => 10.10.10.34:7078
+ * [rtp6] probable reverse RTP stream: [rtp5]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.7.txt
+ ! [rtp7] detected: pt=0(g711U) 192.168.1.127:10476 => 10.10.10.39:7078
+ * [rtp7] probable reverse RTP stream: [rtp4]
+ * [rtp3] closed: packets inbuffer=0 flushed=3379 lost=0(0.00%), call_length=1m8s
+ * [rtp2] closed: packets inbuffer=0 flushed=3389 lost=0(0.00%), call_length=1m8s
+ * [rtp1] closed: packets inbuffer=0 flushed=3393 lost=0(0.00%), call_length=1m8s
+ * [rtp0] closed: packets inbuffer=0 flushed=3415 lost=0(0.00%), call_length=1m8s
+ * [rtp7] closed: packets inbuffer=0 flushed=4264 lost=0(0.00%), call_length=1m26s
+ * [rtp6] closed: packets inbuffer=0 flushed=4281 lost=0(0.00%), call_length=1m26s
+ * [rtp5] closed: packets inbuffer=0 flushed=4284 lost=0(0.00%), call_length=1m26s
+ * [rtp4] closed: packets inbuffer=0 flushed=4292 lost=0(0.00%), call_length=1m26s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.8.txt
+ ! [rtp8] detected: pt=0(g711U) 10.10.10.22:7078 => 192.168.1.127:26732
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.9.txt
+ ! [rtp9] detected: pt=0(g711U) 192.168.1.127:20888 => 10.10.10.38:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.10.txt
+ ! [rtp10] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:20888
+ * [rtp10] probable reverse RTP stream: [rtp9]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.11.txt
+ ! [rtp11] detected: pt=0(g711U) 192.168.1.127:26732 => 10.10.10.22:7078
+ * [rtp11] probable reverse RTP stream: [rtp8]
+ * [rtp11] closed: packets inbuffer=0 flushed=12400 lost=0(0.00%), call_length=4m8s
+ * [rtp10] closed: packets inbuffer=0 flushed=12409 lost=0(0.00%), call_length=4m9s
+ * [rtp9] closed: packets inbuffer=0 flushed=12419 lost=0(0.00%), call_length=4m9s
+ * [rtp8] closed: packets inbuffer=0 flushed=12446 lost=0(0.00%), call_length=4m9s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.12.txt
+ ! [rtp12] detected: pt=0(g711U) 10.10.10.39:7078 => 192.168.1.127:10044
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.13.txt
+ ! [rtp13] detected: pt=0(g711U) 10.10.10.22:7078 => 192.168.1.127:30188
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.14.txt
+ ! [rtp14] detected: pt=0(g711U) 192.168.1.127:10044 => 10.10.10.39:7078
+ * [rtp14] probable reverse RTP stream: [rtp12]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.15.txt
+ ! [rtp15] detected: pt=0(g711U) 192.168.1.127:30188 => 10.10.10.22:7078
+ * [rtp15] probable reverse RTP stream: [rtp13]
+ * [rtp15] closed: packets inbuffer=0 flushed=1709 lost=0(0.00%), call_length=0m34s
+ * [rtp14] closed: packets inbuffer=0 flushed=1704 lost=0(0.00%), call_length=0m34s
+ * [rtp12] closed: packets inbuffer=0 flushed=1720 lost=0(0.00%), call_length=0m34s
+ * [rtp13] closed: packets inbuffer=0 flushed=1705 lost=0(0.00%), call_length=0m34s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.16.txt
+ ! [rtp16] detected: pt=0(g711U) 10.10.10.39:7078 => 192.168.1.127:5162
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.17.txt
+ ! [rtp17] detected: pt=0(g711U) 10.10.10.34:7078 => 192.168.1.127:25374
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.18.txt
+ ! [rtp18] detected: pt=0(g711U) 192.168.1.127:25374 => 10.10.10.34:7078
+ * [rtp18] probable reverse RTP stream: [rtp17]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.19.txt
+ ! [rtp19] detected: pt=0(g711U) 192.168.1.127:5162 => 10.10.10.39:7078
+ * [rtp19] probable reverse RTP stream: [rtp16]
+ * [rtp19] closed: packets inbuffer=0 flushed=7367 lost=12(0.16%), call_length=2m28s
+ * [rtp18] closed: packets inbuffer=0 flushed=7356 lost=0(0.00%), call_length=2m28s
+ * [rtp17] closed: packets inbuffer=0 flushed=7400 lost=0(0.00%), call_length=2m29s
+ * [rtp16] closed: packets inbuffer=0 flushed=7378 lost=0(0.00%), call_length=2m29s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.20.txt
+ ! [rtp20] detected: pt=0(g711U) 10.10.10.39:7078 => 192.168.1.127:8164
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.21.txt
+ ! [rtp21] detected: pt=0(g711U) 192.168.1.127:8164 => 10.10.10.39:7078
+ * [rtp21] probable reverse RTP stream: [rtp20]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.22.txt
+ ! [rtp22] detected: pt=0(g711U) 192.168.1.127:24384 => 10.10.10.38:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.23.txt
+ ! [rtp23] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:24384
+ * [rtp23] probable reverse RTP stream: [rtp22]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.24.txt
+ ! [rtp24] detected: pt=0(g711U) 10.10.10.22:7078 => 192.168.1.127:21218
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.25.txt
+ ! [rtp25] detected: pt=0(g711U) 192.168.1.127:21218 => 10.10.10.22:7078
+ * [rtp25] probable reverse RTP stream: [rtp24]
+ * [rtp21] closed: packets inbuffer=0 flushed=120 lost=0(0.00%), call_length=0m2s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.26.txt
+ ! [rtp26] detected: pt=0(g711U) 192.168.1.127:8164 => 10.10.10.39:7078
+ * [rtp26] probable reverse RTP stream: [rtp20]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.27.txt
+ ! [rtp27] detected: pt=0(g711U) 10.10.10.34:7078 => 192.168.1.127:14856
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.28.txt
+ ! [rtp28] detected: pt=0(g711U) 192.168.1.127:14856 => 10.10.10.34:7078
+ * [rtp28] probable reverse RTP stream: [rtp27]
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.29.txt
+ ! [rtp29] detected: pt=0(g711U) 192.168.1.127:14856 => 10.10.10.34:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_B_Host_Asterisk_IP-PBX/rtp.0.30.txt
+ ! [rtp30] detected: pt=0(g711U) 192.168.1.127:21218 => 10.10.10.22:7078
+ * [rtp22] closed: packets inbuffer=0 flushed=6223 lost=0(0.00%), call_length=2m9s
+ * [rtp23] closed: packets inbuffer=0 flushed=6423 lost=0(0.00%), call_length=2m9s
+ * [rtp28] closed: packets inbuffer=0 flushed=5782 lost=0(0.00%), call_length=1m57s
+ * [rtp26] closed: packets inbuffer=0 flushed=6014 lost=0(0.00%), call_length=2m2s
+ * [rtp25] closed: packets inbuffer=0 flushed=6000 lost=0(0.00%), call_length=2m4s
+ * [rtp20] closed: packets inbuffer=0 flushed=6754 lost=0(0.00%), call_length=2m15s
+ * [rtp29] closed: packets inbuffer=0 flushed=71 lost=0(0.00%), call_length=0m2s
+ * [rtp27] closed: packets inbuffer=0 flushed=5959 lost=0(0.00%), call_length=1m59s
+ * [rtp30] closed: packets inbuffer=0 flushed=119 lost=0(0.00%), call_length=0m3s
+ * [rtp24] closed: packets inbuffer=0 flushed=6863 lost=0(0.00%), call_length=2m17s
+ * eof reached.
+--
+Caught SIGTERM signal (15), cleaning up...
+--
+ + Status
+   Alive RTP Sessions: 0
+   Closed RTP Sessions: 31
+   Detected RTP Sessions: 31
+   Flushed RTP packets: 167038
+   Lost RTP packets: 12 (0.01%)
+   Noise (false positive) packets: 688
+ + No active RTP streams
+

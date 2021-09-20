@@ -1,0 +1,71 @@
+ + rtpbreak v1.3a running here!
+ + pid: 6121, date/time: 19/09/2021#16:20:16
+ + Configuration
+   + INPUT
+     Packet source: rxfile '/home/eden/Desktop/VoIP external datasets/RTP Flood records/RTP_A_Host_Client4.pcap'
+     Force datalink header length: disabled
+   + OUTPUT
+     Output directory: '/home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4'
+     RTP raw dumps: enabled
+     RTP pcap dumps: enabled
+     Fill gaps: disabled
+     Dump noise: disabled
+     Logfile: '/home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.txt'
+     Logging to stdout: enabled
+     Logging to syslog: disabled
+     Be verbose: disabled
+   + SELECT
+     Sniff packets in promisc mode: disabled
+     Add pcap filter: disabled
+     Expecting even destination UDP port: disabled
+     Expecting unprivileged source/destination UDP ports: disabled
+     Expecting RTP payload type: any
+     Expecting RTP payload length: any
+     Packet timeout: 10.00 seconds
+     Pattern timeout: 0.25 seconds
+     Pattern packets: 5
+   + EXECUTION
+     Running as user/group: root/root
+     Running daemonized: disabled
+ * You can dump stats sending me a SIGUSR2 signal
+ * Reading packets...
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.0.txt
+ ! [rtp0] detected: pt=0(g711U) 192.168.1.127:5212 => 10.10.10.38:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.1.txt
+ ! [rtp1] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:5212
+ * [rtp1] probable reverse RTP stream: [rtp0]
+ * [rtp1] closed: packets inbuffer=0 flushed=3341 lost=0(0.00%), call_length=1m7s
+ * [rtp0] closed: packets inbuffer=0 flushed=3142 lost=19(0.60%), call_length=1m7s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.2.txt
+ ! [rtp2] detected: pt=0(g711U) 192.168.1.127:25984 => 10.10.10.38:7078
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.3.txt
+ ! [rtp3] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:25984
+ * [rtp3] probable reverse RTP stream: [rtp2]
+ * [rtp3] closed: packets inbuffer=0 flushed=12412 lost=0(0.00%), call_length=4m8s
+ * [rtp2] closed: packets inbuffer=0 flushed=12251 lost=46(0.37%), call_length=4m9s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.4.txt
+ ! [rtp4] detected: pt=0(g711U) 172.168.1.44:5060 => 10.10.10.38:5060
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.5.txt
+ ! [rtp5] detected: pt=0(g711U) 10.10.10.38:7078 => 192.168.1.127:25428
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.6.txt
+ ! [rtp6] detected: pt=0(g711U) 192.168.1.127:25428 => 10.10.10.38:7078
+ * [rtp6] probable reverse RTP stream: [rtp5]
+ * [rtp4] closed: packets inbuffer=0 flushed=9995 lost=0(0.00%), call_length=3m22s
+open di /home/eden/Desktop/proccesed and tagged external datasets/RTP Flood records/benign recording/RTP_A_Host_Client4/rtp.0.7.txt
+ ! [rtp7] detected: pt=0(g711U) 192.168.1.127:25428 => 10.10.10.38:7078
+ * [rtp6] closed: packets inbuffer=0 flushed=7192 lost=0(0.00%), call_length=2m28s
+ * [rtp7] closed: packets inbuffer=0 flushed=119 lost=0(0.00%), call_length=0m2s
+ * [rtp5] closed: packets inbuffer=0 flushed=8058 lost=0(0.00%), call_length=2m41s
+ * eof reached.
+--
+Caught SIGTERM signal (15), cleaning up...
+--
+ + Status
+   Alive RTP Sessions: 0
+   Closed RTP Sessions: 8
+   Detected RTP Sessions: 8
+   Flushed RTP packets: 56510
+   Lost RTP packets: 65 (0.11%)
+   Noise (false positive) packets: 197
+ + No active RTP streams
+

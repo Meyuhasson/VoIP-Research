@@ -8,7 +8,15 @@ import sklearn
 import matplotlib.pyplot as plt
 import IPython.display as ipd
 import librosa.display
+import os
 
+def get_list_of_wav_files(BENIGN_RECORDING_PATH):
+    list_of_wav_files = []
+    for dir in os.listdir(BENIGN_RECORDING_PATH):
+        for file in os.listdir(BENIGN_RECORDING_PATH + '\\' + dir):
+            if file.endswith(".wav"):
+                list_of_wav_files.append(os.path.join(BENIGN_RECORDING_PATH + "\\" + dir, file))
+    return list_of_wav_files
 
 def getTime(inner_data):
     return librosa.get_duration(inner_data)
