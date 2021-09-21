@@ -5,7 +5,7 @@ import audio_utils
 np.set_printoptions(suppress=True) #prevent numpy exponential
 
 #the output path for the csv with features extracted
-OUTPUT_PATH = r"C:\Users\edenm\Desktop\thesis\features_extracted\extracted_datasets.csv"
+OUTPUT_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\extracted_datasets.csv"
 
 #the path consist files with wav files isnide them - only benign
 BENIGN_RECORDING_PATH = r"C:\Users\edenm\Desktop\thesis\proccesed and tagged external datasets\RTP Flood records\benign recording"
