@@ -1,8 +1,7 @@
 import pandas as pd
 from sklearn import tree
 from sklearn.model_selection import train_test_split
-from sklearn.tree import export_graphviz
-import graphviz
+
 
 PROCESSED_FEATURES_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\processed_features_for_train.csv"
 
@@ -13,3 +12,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 model = tree.DecisionTreeClassifier()
 model.fit(X, y)
 print(model.score(X_test, model.predict(X_test)))
+
+"""
+to be continue:
+---------------
+
+- to print the tree.
+- to plot the correlation matrix due to the target (malicious/benign).
+
+"""
