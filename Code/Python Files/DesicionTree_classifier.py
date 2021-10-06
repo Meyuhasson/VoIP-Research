@@ -18,7 +18,7 @@ print(text_representation)
 fig = plt.figure(figsize=(10,5))
 _ = tree.plot_tree(clf,
                    feature_names=list(X_train.columns.values),
-                   class_names= ["True", "False"],
+                   class_names= ["Malicious", "Benign"],
                    filled=True)
 plt.show()
 
