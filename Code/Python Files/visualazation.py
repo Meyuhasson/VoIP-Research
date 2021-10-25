@@ -11,25 +11,35 @@ data = pd.read_csv(PROCESSED_FEATURES_PATH).drop([r"Unnamed: 0"], axis=1)
 X = data.drop("isMalicious", axis=1)
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 
-
 #drop irrelevant for anomalous data features
 data_droped = data.drop(["isMalicious", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
+#inversed data means exactly the data we think it not relevant.
+data_droped_inversed = data.drop(data.columns.difference(["isMalicious", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"]), axis=1)
+
 scaler = MinMaxScaler()
 minmax_scaled = scaler.fit_transform(data_droped)
+minmax_scaled_inversed = scaler.fit_transform(data_droped_inversed)
 
 scaler = StandardScaler()
 standart_scaled = scaler.fit_transform(data_droped)
+standart_scaled_inversed = scaler.fit_transform(data_droped_inversed)
 
 pca_model = PCA(n_components=2)
 data_transformed = pca_model.fit_transform(data_droped)
 data_transformed = pca_model.inverse_transform(data_transformed)
+data_transformed_inversed = pca_model.fit_transform(data_droped_inversed)
+data_transformed_inversed = pca_model.inverse_transform(data_transformed_inversed)
 
 #plots
 DS_utils.plot_points_scatter(minmax_scaled, data, "minmax scaled")
+DS_utils.plot_points_scatter(minmax_scaled_inversed, data, "minmax scaled inversed")
 DS_utils.plot_points_scatter(data_droped, data, "original data")
-DS_utils.plot_points_scatter(data_transformed, data, "after_PCA_transformed_and_inverse")
+DS_utils.plot_points_scatter(data_droped_inversed, data, "original inversed data")
 DS_utils.plot_points_scatter(standart_scaled, data, "standartscaler scaled")
+DS_utils.plot_points_scatter(standart_scaled_inversed, data, "standartscaler scaled inversed")
+DS_utils.plot_points_scatter(data_transformed, data, "after_PCA_transformed_and_inverse")
+DS_utils.plot_points_scatter(data_transformed_inversed, data, "after_PCA_transformed_and_inverse of inversed data")
 
 
 

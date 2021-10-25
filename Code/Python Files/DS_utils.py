@@ -2,6 +2,11 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 
+# the function plots the scatter of the df we want to plot,
+# also numpy data (for examplr after scaling) is ok to send with no conversion,
+# df_with_target is any df who has the targets variables with no missing values from the df we send to plot,
+# and with the same indexes.
+
 def plot_points_scatter(df_to_plot, df_with_target_varaible, title_t):
     pca_model = PCA(n_components=2)
     data_transformed = pca_model.fit_transform(df_to_plot)
