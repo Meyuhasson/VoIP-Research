@@ -1,4 +1,5 @@
 from sklearn.ensemble import IsolationForest
+import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from sklearn.preprocessing import MinMaxScaler
@@ -15,6 +16,18 @@ y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #drop irrelevant for anomalous data features
 X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
+df_temp = pd.DataFrame()
+for i in X.columns:
+
+    # generate 1000 random samples between the range of the specific column's benign values
+    samples = np.random.uniform(min(X[:-6][i].values), max(X[:-6][i].values), 1000)
+
+    #creating the new generated df
+    df_temp[i] = samples
+
+#append the new generated data df to the original
+df_temp = df_temp.append(X)
+
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
@@ -29,7 +42,6 @@ for i in tqdm(parameters["n_estimators"]):
         for z in parameters["max_features"]:
             for w in parameters["bootstrap"]:
                 isof = IsolationForest(n_jobs=-1, n_estimators = i, contamination = j, max_features = z, bootstrap = w)
-                #isof.fit(X_scaled[:-6])
                 isof.fit(X_scaled)
                 X["isof_output" + " " + str(run)] = isof.predict(X_scaled)
                 if (min > (X["isof_output" + " " + str(run)] == -1).sum()):

@@ -29,8 +29,7 @@ for i in tqdm(parameters["n_estimators"]):
         for z in parameters["max_features"]:
             for w in parameters["bootstrap"]:
                 isof = IsolationForest(n_jobs=-1, n_estimators = i, contamination = j, max_features = z, bootstrap = w)
-                #isof.fit(X_scaled[:-6])
-                isof.fit(X_scaled)
+                isof.fit(X_scaled[:-6])
                 X["isof_output" + " " + str(run)] = isof.predict(X_scaled)
                 if (min > (X["isof_output" + " " + str(run)] == -1).sum()):
                     if ((X["isof_output" + " " + str(run)] == -1).sum()>5):

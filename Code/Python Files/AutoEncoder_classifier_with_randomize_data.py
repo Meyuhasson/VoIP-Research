@@ -16,23 +16,25 @@ X = data.drop("isMalicious", axis=1)
 
 #drop irrelevant for anomalous data features
 X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
+#X = X.drop(["RTP_payload_type", "suspicious_diff", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
+
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 
 df_temp = pd.DataFrame()
-for i in X.columns:
+for col in X.columns:
 
     # generate 1000 random samples between the range of the specific column's benign values
-    samples = np.random.uniform(min(X[:-6][i].values), max(X[:-6][i].values), 1000)
+    samples = np.random.uniform(min(X[:-6][col].values), max(X[:-6][col].values), 1000)
 
     #creating the new generated df
-    df_temp[i] = samples
+    df_temp[col] = samples
 
 #cliping all columns with generated data by min, max of the original data
 for col in df_temp.columns.values:
     df_temp[col] = df_temp[col].clip(lower = X[:-6][col].min(), upper= X[:-6][col].max())
 
 #append the new generated data df to the original
-X = X.append(df_temp)
+X = df_temp.append(X)
 
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
@@ -53,7 +55,7 @@ print(model.summary())
 
 model.compile("Adam", "mse")
 
-model.fit(np.array(X_scaled[:-6]), np.array(X_scaled[:-6]), batch_size=12, epochs=1500)
+model.fit(np.array(X_scaled[:-6]), np.array(X_scaled[:-6]), batch_size=12, epochs=10000)
 #model.fit(np.array(X[:-6]).astype("float32"), np.array(X[:-6]).astype("float32"), batch_size=12, epochs=10000)
 
 #AE_output = model.predict(np.array(X))
