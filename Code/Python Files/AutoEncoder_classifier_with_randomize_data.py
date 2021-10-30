@@ -27,6 +27,10 @@ for i in X.columns:
     #creating the new generated df
     df_temp[i] = samples
 
+#cliping all columns with generated data by min, max of the original data
+for col in df_temp.columns.values:
+    df_temp[col] = df_temp[col].clip(lower = X[:-6][col].min(), upper= X[:-6][col].max())
+
 #append the new generated data df to the original
 X = X.append(df_temp)
 

@@ -20,6 +20,8 @@ X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_pay
 
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #scaler = StandardScaler()
+
+
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 

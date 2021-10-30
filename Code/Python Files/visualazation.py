@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import PCA
@@ -16,6 +17,22 @@ data_droped = data.drop(["isMalicious", "RTP_payload_length", "original_sr", r"R
 
 #inversed data means exactly the data we think it not relevant.
 data_droped_inversed = data.drop(data.columns.difference(["isMalicious", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"]), axis=1)
+
+df_temp = pd.DataFrame()
+for i in data_droped.columns:
+
+    # generate 1000 random samples between the range of the specific column's benign values
+    samples = np.random.uniform(min(X[:-6][i].values), max(X[:-6][i].values), 1000)
+
+    #creating the new generated df
+    df_temp[i] = samples
+
+#append the new generated data df to the original
+df_temp = data_droped.append(df_temp)
+
+#cliping all columns with generated data by min, max of the original data
+for col in data_droped.columns.values:
+    df_temp[col] = df_temp[col].clip(lower = data_droped[:-6][col].min(), upper= data_droped[:-6][col].max())
 
 scaler = MinMaxScaler()
 minmax_scaled = scaler.fit_transform(data_droped)
@@ -40,6 +57,6 @@ DS_utils.plot_points_scatter(standart_scaled, data, "standartscaler scaled")
 DS_utils.plot_points_scatter(standart_scaled_inversed, data, "standartscaler scaled inversed")
 DS_utils.plot_points_scatter(data_transformed, data, "after_PCA_transformed_and_inverse")
 DS_utils.plot_points_scatter(data_transformed_inversed, data, "after_PCA_transformed_and_inverse of inversed data")
-
+DS_utils.plot_points_scatter(df_temp, data, "generated data")
 
 
