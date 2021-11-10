@@ -1,0 +1,57 @@
+ + rtpbreak v1.3a running here!
+ + pid: 2202, date/time: 10/11/2021#03:06:11
+ + Configuration
+   + INPUT
+     Packet source: iface 'ens33'
+     Force datalink header length: disabled
+   + OUTPUT
+     Output directory: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs'
+     RTP raw dumps: enabled
+     RTP pcap dumps: enabled
+     Fill gaps: disabled
+     Dump noise: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.noise.pcap'
+     Logfile: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.txt'
+     Logging to stdout: enabled
+     Logging to syslog: disabled
+     Be verbose: disabled
+   + SELECT
+     Sniff packets in promisc mode: enabled
+     Add pcap filter: disabled
+     Expecting even destination UDP port: disabled
+     Expecting unprivileged source/destination UDP ports: disabled
+     Expecting RTP payload type: any
+     Expecting RTP payload length: any
+     Packet timeout: 100.00 seconds
+     Pattern timeout: 100.00 seconds
+     Pattern packets: 2
+   + EXECUTION
+     Running as user/group: root/root
+     Running daemonized: disabled
+ * You can dump stats sending me a SIGUSR2 signal
+ * Reading packets...
+open di /home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.0.txt
+ ! [rtp0] detected: pt=0(g711U) 212.150.158.100:19656 => 192.168.25.128:8000
+open di /home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.1.txt
+ ! [rtp1] detected: pt=0(g711U) 192.168.25.128:8000 => 212.150.158.100:19656
+ * [rtp1] probable reverse RTP stream: [rtp0]
+open di /home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.2.txt
+ ! [rtp2] detected: pt=0(g711U) 212.150.158.100:15962 => 192.168.25.128:8000
+open di /home/eden/Desktop/RTPSPLIT/rtpbreak outputs/rtp.8.3.txt
+ ! [rtp3] detected: pt=0(g711U) 192.168.25.128:8000 => 212.150.158.100:15962
+ * [rtp3] probable reverse RTP stream: [rtp2]
+--
+Caught SIGINT signal (2), cleaning up...
+--
+ * [rtp2] closed: packets inbuffer=0 flushed=359 lost=0(0.00%), call_length=0m6s
+ * [rtp3] closed: packets inbuffer=0 flushed=310 lost=0(0.00%), call_length=0m7s
+ * [rtp0] closed: packets inbuffer=0 flushed=524 lost=1(0.19%), call_length=0m10s
+ * [rtp1] closed: packets inbuffer=0 flushed=483 lost=0(0.00%), call_length=0m11s
+ + Status
+   Alive RTP Sessions: 0
+   Closed RTP Sessions: 4
+   Detected RTP Sessions: 4
+   Flushed RTP packets: 1676
+   Lost RTP packets: 1 (0.06%)
+   Noise (false positive) packets: 10
+ + No active RTP streams
+

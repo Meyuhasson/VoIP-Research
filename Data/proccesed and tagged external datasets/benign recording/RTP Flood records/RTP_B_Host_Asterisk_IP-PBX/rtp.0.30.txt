@@ -1,0 +1,11 @@
+RTP stream id: rtp.0.30
+Packet source: rxfile '/home/eden/Desktop/VoIP external datasets/RTP Flood records/RTP_B_Host_Asterisk_IP-PBX.pcap'
+First seen packet: 16/08/2020#05:40:05 (pcap time)
+Stream peers: 192.168.1.127:21218 => 10.10.10.22:7078
+RTP ssrc: 99678986
+RTP payload type: 0 (ITU-T G.711 PCMU)
+Last seen packet: 16/08/2020#05:40:08 (pcap time)
+Call length: 0m3s
+Flushed packets: 119
+Lost packets: 0 (0.00%)
+RTP payload length: 4 bytes (variable, this is the last seen)

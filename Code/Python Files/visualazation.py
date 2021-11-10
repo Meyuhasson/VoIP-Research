@@ -18,21 +18,29 @@ data_droped = data.drop(["isMalicious", "RTP_payload_length", "original_sr", r"R
 #inversed data means exactly the data we think it not relevant.
 data_droped_inversed = data.drop(data.columns.difference(["isMalicious", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"]), axis=1)
 
+df_temp_normal = pd.DataFrame()
 df_temp = pd.DataFrame()
 for i in data_droped.columns:
 
     # generate 1000 random samples between the range of the specific column's benign values
-    samples = np.random.uniform(min(X[:-6][i].values), max(X[:-6][i].values), 1000)
+    uniform_samples = np.random.uniform(min(X[:-6][i].values), max(X[:-6][i].values), 1000)
+    avg_std = (X[:-6][i].max() - X[:-6][i].mean() + X[:-6][i].mean() -X[:-6][i].min())/2
+    normal_samples = np.random.normal(loc=X[:-6][i].mean(), scale= avg_std, size= 1000)
 
     #creating the new generated df
-    df_temp[i] = samples
+    df_temp[i] = uniform_samples
+    df_temp_normal[i] = normal_samples
 
 #append the new generated data df to the original
 df_temp = data_droped.append(df_temp)
+df_temp_normal = data_droped.append((df_temp_normal))
 
 #cliping all columns with generated data by min, max of the original data
-for col in data_droped.columns.values:
-    df_temp[col] = df_temp[col].clip(lower = data_droped[:-6][col].min(), upper= data_droped[:-6][col].max())
+#for col in data_droped.columns.values:
+#    df_temp[col] = df_temp[col].clip(lower = data_droped[:-6][col].min(), upper= data_droped[:-6][col].max())
+
+#for col in data_droped.columns.values:
+#    df_temp_normal[col] = df_temp_normal[col].clip(lower = data_droped[:-6][col].min(), upper= data_droped[:-6][col].max())
 
 scaler = MinMaxScaler()
 minmax_scaled = scaler.fit_transform(data_droped)
@@ -57,6 +65,6 @@ DS_utils.plot_points_scatter(standart_scaled, data, "standartscaler scaled")
 DS_utils.plot_points_scatter(standart_scaled_inversed, data, "standartscaler scaled inversed")
 DS_utils.plot_points_scatter(data_transformed, data, "after_PCA_transformed_and_inverse")
 DS_utils.plot_points_scatter(data_transformed_inversed, data, "after_PCA_transformed_and_inverse of inversed data")
-DS_utils.plot_points_scatter(df_temp, data, "generated data")
-
+DS_utils.plot_points_scatter(df_temp, data, "generated and original uniform distributed data")
+DS_utils.plot_points_scatter(df_temp_normal, data, "generated and original normal distributed data")
 

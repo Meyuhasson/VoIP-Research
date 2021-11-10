@@ -1,0 +1,11 @@
+RTP stream id: rtp.8.2
+Packet source: iface  'ens33'
+First seen packet: 10/11/2021#03:07:17 (pcap time)
+Stream peers: 212.150.158.100:15962 => 192.168.25.128:8000
+RTP ssrc: 1768349064
+RTP payload type: 0 (ITU-T G.711 PCMU)
+Last seen packet: 10/11/2021#03:07:23 (pcap time)
+Call length: 0m6s
+Flushed packets: 359
+Lost packets: 0 (0.00%)
+RTP payload length: 160 bytes (fixed)

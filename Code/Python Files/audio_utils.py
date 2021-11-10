@@ -44,6 +44,7 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
         Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
         RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        Audio_File_Path = WAVEFILE_PATH
         print ("the duration of the audio file is: "+ str(duration))
         print ("the original sample rate of the audio file is: "+ str(original_sr))
         print ("is the audio file extermom points are chaged Suspiciously :" + str(suspicious_diff))
@@ -76,6 +77,7 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         df._set_value(i, 'RTP_payload_type', RTP_payload_type)
         df._set_value(i, 'Lost_packets', Lost_packets)
         df._set_value(i, 'Flushed_packets', Flushed_packets)
+        df._set_value(i, 'Audio_File_Path', Audio_File_Path)
         df._set_value(i, 'isMalicious', False)
 
         if (FIRST_RUN_INDICATOR == True):
@@ -109,6 +111,7 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
         Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
         RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        Audio_File_Path = WAVEFILE_PATH
         print("the duration of the audio file is: " + str(duration))
         print("the original sample rate of the audio file is: " + str(original_sr))
         print("is the audio file extermom points are chaged Suspiciously :" + str(suspicious_diff))
@@ -141,6 +144,7 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         df._set_value(i, 'RTP_payload_type', RTP_payload_type)
         df._set_value(i, 'Lost_packets', Lost_packets)
         df._set_value(i, 'Flushed_packets', Flushed_packets)
+        df._set_value(i, 'Audio_File_Path', Audio_File_Path)
         df._set_value(i, 'isMalicious', True)
 
         df.to_csv(output_path, mode='a', header=False)
@@ -151,8 +155,13 @@ def get_list_of_files_fromType(RECORDING_PATH, type):
     list_of_wav_files = []
     for dir in os.listdir(RECORDING_PATH):
         for file in os.listdir(RECORDING_PATH + '\\' + dir):
-            if file.endswith("."+type):
-                list_of_wav_files.append(os.path.join(RECORDING_PATH + "\\" + dir, file))
+            if(os.path.isdir(RECORDING_PATH + '\\' + dir + '\\' + file)):
+                for filely in os.listdir(RECORDING_PATH + '\\' + dir + '\\' + file):
+                    if filely.endswith("." + type):
+                        list_of_wav_files.append(os.path.join(RECORDING_PATH + "\\" + dir + '\\' + file, filely))
+            else:
+                if file.endswith("."+type):
+                    list_of_wav_files.append(os.path.join(RECORDING_PATH + "\\" + dir, file))
     return list_of_wav_files
 
 def getTime(inner_data):

@@ -15,8 +15,8 @@ y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #drop irrelevant for anomalous data features
 X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+#scaler = MinMaxScaler()
+#X_scaled = scaler.fit_transform(X)
 
 parameters = {"n_estimators":[100, 90, 80, 70, 60, 55 ,50 ,45, 40, 35, 30, 20, 10, 5], "bootstrap":[True, False], "max_features":[1,2,3,4,5,6,7,8], "contamination" :[0.4, 0.35, 0.3, 0.25, 0.2, 0.15 ,0.1, 0.07 ,0.05, 0.03 ,0.01]}
 #clf = GridSearchCV(isof, parameters, scoring="accuracy", cv=5, n_jobs = -1)
@@ -29,8 +29,10 @@ for i in tqdm(parameters["n_estimators"]):
         for z in parameters["max_features"]:
             for w in parameters["bootstrap"]:
                 isof = IsolationForest(n_jobs=-1, n_estimators = i, contamination = j, max_features = z, bootstrap = w)
-                isof.fit(X_scaled[:-6])
-                X["isof_output" + " " + str(run)] = isof.predict(X_scaled)
+                #isof.fit(X_scaled[:-6])
+                isof.fit(X[:-6])
+                #X["isof_output" + " " + str(run)] = isof.predict(X_scaled)
+                X["isof_output" + " " + str(run)] = isof.predict(X)
                 if (min > (X["isof_output" + " " + str(run)] == -1).sum()):
                     if ((X["isof_output" + " " + str(run)] == -1).sum()>5):
                         min = (X["isof_output" + " " + str(run)] == -1).sum()

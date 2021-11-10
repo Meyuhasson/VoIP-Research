@@ -1,0 +1,12 @@
+RTP stream id: rtp.0.3
+Packet source: rxfile '/home/eden/Desktop/VoIP external datasets/RTP Flood records/RTP_A_Host_Client4.pcap'
+First seen packet: 16/08/2020#01:59:37 (pcap time)
+Stream peers: 10.10.10.38:7078 => 192.168.1.127:25984
+RTP ssrc: 2147903196
+RTP payload type: 0 (ITU-T G.711 PCMU)
+Probable reverse RTP stream id: rtp.0.2
+Last seen packet: 16/08/2020#02:03:45 (pcap time)
+Call length: 4m8s
+Flushed packets: 12412
+Lost packets: 0 (0.00%)
+RTP payload length: 160 bytes (fixed)

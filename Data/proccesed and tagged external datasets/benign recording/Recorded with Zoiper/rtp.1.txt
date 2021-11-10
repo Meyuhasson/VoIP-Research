@@ -1,0 +1,4 @@
+--
+20/03/2021#12:57:40 Fatal error at main.c:517:init_opt: pcap_open_live(): ens33: You don't have permission to capture on that device (socket: Operation not permitted); exit forced.
+--
+
