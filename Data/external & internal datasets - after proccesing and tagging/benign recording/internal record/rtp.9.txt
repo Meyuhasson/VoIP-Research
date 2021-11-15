@@ -1,0 +1,43 @@
+ + rtpbreak v1.3a running here!
+ + pid: 2315, date/time: 15/11/2021#04:41:20
+ + Configuration
+   + INPUT
+     Packet source: iface 'ens33'
+     Force datalink header length: disabled
+   + OUTPUT
+     Output directory: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs/'
+     RTP raw dumps: enabled
+     RTP pcap dumps: enabled
+     Fill gaps: disabled
+     Dump noise: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs//rtp.9.noise.pcap'
+     Logfile: '/home/eden/Desktop/RTPSPLIT/rtpbreak outputs//rtp.9.txt'
+     Logging to stdout: enabled
+     Logging to syslog: disabled
+     Be verbose: disabled
+   + SELECT
+     Sniff packets in promisc mode: enabled
+     Add pcap filter: disabled
+     Expecting even destination UDP port: disabled
+     Expecting unprivileged source/destination UDP ports: disabled
+     Expecting RTP payload type: any
+     Expecting RTP payload length: any
+     Packet timeout: 100.00 seconds
+     Pattern timeout: 100.00 seconds
+     Pattern packets: 2
+   + EXECUTION
+     Running as user/group: root/root
+     Running daemonized: disabled
+ * You can dump stats sending me a SIGUSR2 signal
+ * Reading packets...
+--
+Caught SIGTERM signal (15), cleaning up...
+--
+ + Status
+   Alive RTP Sessions: 0
+   Closed RTP Sessions: 0
+   Detected RTP Sessions: 0
+   Flushed RTP packets: 0
+   Lost RTP packets: 0 (0.00%)
+   Noise (false positive) packets: 3
+ + No active RTP streams
+

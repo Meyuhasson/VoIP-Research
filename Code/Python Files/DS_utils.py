@@ -12,8 +12,8 @@ def plot_points_scatter(df_to_plot, df_with_target_varaible, title_t):
     data_transformed = pca_model.fit_transform(df_to_plot)
     principalDf = pd.DataFrame(data=data_transformed, columns=['principal component 1', 'principal component 2'])
     finalDf = pd.concat([principalDf, df_with_target_varaible[['isMalicious']]], axis=1)
-    if (len(finalDf) > len(df_to_plot+1)):
-        finalDf["isMalicious"][df_to_plot+1:] = finalDf[df_to_plot+1:].apply(lambda row: False, axis=1)
+    if (len(finalDf) > len(df_with_target_varaible)):
+        finalDf["isMalicious"][len(df_with_target_varaible)+1:] = finalDf[len(df_with_target_varaible)+1:].apply(lambda row: False, axis=1)
 
     fig = plt.figure(figsize = (8,8))
     ax = fig.add_subplot(1,1,1)
