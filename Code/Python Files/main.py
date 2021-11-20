@@ -11,10 +11,10 @@ np.set_printoptions(suppress=True) #prevent numpy exponential
 OUTPUT_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\extracted_datasets.csv"
 
 #the path consist files with wav files isnide them - only benign
-BENIGN_RECORDING_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\proccesed and tagged external datasets\benign recording"
+BENIGN_RECORDING_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\external & internal datasets - after proccesing and tagging\benign recording"
 
 #the path consist files with wav files isnide them - only malicious
-MALICIOUS_RECORDING_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\proccesed and tagged external datasets\malicious recordings"
+MALICIOUS_RECORDING_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\external & internal datasets - after proccesing and tagging\malicious recordings"
 
 
 
