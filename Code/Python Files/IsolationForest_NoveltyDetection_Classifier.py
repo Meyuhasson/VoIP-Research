@@ -44,7 +44,7 @@ for i in tqdm(parameters["n_estimators"]):
 
 print(best_params)
 print(X)
-
+print("hey")
 '''
 isof = IsolationForest(n_estimators=100, contamination=0.05, max_features=2, bootstrap=False)
 isof.fit(X_scaled[:-6])
