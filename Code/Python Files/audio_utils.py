@@ -39,11 +39,19 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         max = maximum_amplitude(data)
         max_magnitude,min_magnitude, max_phase, min_phase = stft(data, sr)
         dict_of_RTPSPLIT_features = get_rtp_features_of_RTPSPLIT(wavFilePath.replace("_.wav", ".txt"))
-        RTP_ssrc = dict_of_RTPSPLIT_features["RTP ssrc"]
-        RTP_payload_type = dict_of_RTPSPLIT_features["RTP payload type"]
-        Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
-        Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
-        RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        if (dict_of_RTPSPLIT_features != None):
+
+            RTP_ssrc = dict_of_RTPSPLIT_features["RTP ssrc"]
+            RTP_payload_type = dict_of_RTPSPLIT_features["RTP payload type"]
+            Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
+            Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
+            RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        else:
+            RTP_ssrc = None
+            RTP_payload_type = None
+            Flushed_packets = None
+            Lost_packets = None
+            RTP_payload_length = None
         Audio_File_Path = WAVEFILE_PATH
         print ("the duration of the audio file is: "+ str(duration))
         print ("the original sample rate of the audio file is: "+ str(original_sr))
@@ -106,11 +114,19 @@ def write_wav_features_to_csv(list_of_benign_wavFiles_paths, list_of_malicious_w
         max = maximum_amplitude(data)
         max_magnitude, min_magnitude, max_phase, min_phase = stft(data, sr)
         dict_of_RTPSPLIT_features = get_rtp_features_of_RTPSPLIT(wavFilePath.replace("_.wav",".txt"))
-        RTP_ssrc = dict_of_RTPSPLIT_features["RTP ssrc"]
-        RTP_payload_type = dict_of_RTPSPLIT_features["RTP payload type"]
-        Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
-        Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
-        RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        if (dict_of_RTPSPLIT_features != None):
+
+            RTP_ssrc = dict_of_RTPSPLIT_features["RTP ssrc"]
+            RTP_payload_type = dict_of_RTPSPLIT_features["RTP payload type"]
+            Flushed_packets = dict_of_RTPSPLIT_features["Flushed packets"]
+            Lost_packets = dict_of_RTPSPLIT_features["Lost packets"]
+            RTP_payload_length = dict_of_RTPSPLIT_features["RTP payload length"]
+        else:
+            RTP_ssrc = None
+            RTP_payload_type = None
+            Flushed_packets = None
+            Lost_packets = None
+            RTP_payload_length = None
         Audio_File_Path = WAVEFILE_PATH
         print("the duration of the audio file is: " + str(duration))
         print("the original sample rate of the audio file is: " + str(original_sr))
@@ -264,9 +280,12 @@ def stft(inner_data, sr):
 #get txt file path with rtpsplit output and return the features out of it
 def get_rtp_features_of_RTPSPLIT(file_path):
     dict_of_rtp_features = {}
-    with open(file_path.replace("wav", "txt")) as fh:
-        for line in fh:
-            if line.strip():  # Ignore blank lines
-                key, value = [x.strip() for x in line.strip().split(':', 1)]
-                dict_of_rtp_features[key] = value
-    return dict_of_rtp_features
+    try:
+        with open(file_path.replace("wav", "txt")) as fh:
+            for line in fh:
+                if line.strip():  # Ignore blank lines
+                    key, value = [x.strip() for x in line.strip().split(':', 1)]
+                    dict_of_rtp_features[key] = value
+        return dict_of_rtp_features
+    except:
+        return None

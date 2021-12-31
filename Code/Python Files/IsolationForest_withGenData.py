@@ -14,7 +14,7 @@ X = data.drop("isMalicious", axis=1)
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 
 #drop irrelevant for anomalous data features
-X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
+X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
 df_temp = pd.DataFrame()
 for i in X.columns:

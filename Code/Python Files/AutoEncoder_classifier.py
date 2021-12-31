@@ -16,7 +16,7 @@ data = pd.read_csv(PROCESSED_FEATURES_PATH).drop([r"Unnamed: 0"], axis=1)
 X = data.drop("isMalicious", axis=1)
 
 #drop irrelevant for anomalous data features
-X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
+X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #scaler = StandardScaler()
@@ -44,13 +44,13 @@ print(model.summary())
 
 model.compile("Adam", "mse")
 
-model.fit(np.array(X_scaled[:-6]), np.array(X_scaled[:-6]), batch_size=6, epochs=150)
+model.fit(np.array(X_scaled[:-50]), np.array(X_scaled[:-50]), batch_size=6, epochs=150)
 #model.fit(np.array(X[:-6]).astype("float32"), np.array(X[:-6]).astype("float32"), batch_size=12, epochs=10000)
 
 #AE_output = model.predict(np.array(X))
-AE_output = model.predict(np.array(X_scaled))
+AE_output = model.predict(np.array(X_scaled[-50:]))
 #AE_deferences = sqrt((AE_output - X)**2)
-AE_deferences = sqrt((AE_output - X_scaled)**2)
+AE_deferences = sqrt((AE_output - X_scaled[-50:])**2)
 AE_df = pd.DataFrame(AE_deferences, columns=X.columns)
 AE_df["grades"] = AE_df.apply(lambda row: np.linalg.norm(0 - row), axis=1)
 AE_df = AE_df.sort_values("grades")

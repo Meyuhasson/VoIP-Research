@@ -13,7 +13,7 @@ X = data.drop("isMalicious", axis=1)
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 
 #drop irrelevant for anomalous data features
-data_droped = data.drop(["isMalicious", "RTP_payload_length", "original_sr", r"RTP_payload_type", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
+data_droped = data.drop(["isMalicious", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
 #inversed data means exactly the data we think it not relevant.
 data_droped_inversed = data.drop(data.columns.difference(["isMalicious", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "Lost_packets_count", "min_magnitude1", "min_magnitude2", "min_magnitude3"]), axis=1)
