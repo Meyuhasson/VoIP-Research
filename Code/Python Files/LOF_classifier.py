@@ -19,7 +19,11 @@ X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicio
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
-model = LocalOutlierFactor()
-model.fit_predict(X)
-pred = model.negative_outlier_factor_
+model = LocalOutlierFactor(n_neighbors=5, novelty=True)
+model.fit(X[:-50])
+#pred = model.negative_outlier_factor_
+#pred_sorted = np.sort(model.negative_outlier_factor_)
+pred = model.decision_function(X[-50:-5])
+pred_sort = np.sort(pred)
 print("hey")
+

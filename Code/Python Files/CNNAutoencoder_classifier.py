@@ -62,7 +62,7 @@ print(AE_model.summary())
 
 AE_model.compile("Adam", "mse")
 
-AE_model.fit(list_of_benign_raw_data[:-25], list_of_benign_raw_data[:-25], batch_size=6, epochs=10)
+AE_model.fit(list_of_benign_raw_data[:-25], list_of_benign_raw_data[:-25], batch_size=6, epochs=100)
 
 AE_output = AE_model.predict(np.concatenate((list_of_benign_raw_data[-25:] , list_of_malicious_raw_data)))
 

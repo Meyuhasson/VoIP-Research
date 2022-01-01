@@ -19,8 +19,8 @@ X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicio
 
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+#scaler = MinMaxScaler()
+#X_scaled = scaler.fit_transform(X)
 
 pca_model = PCA(n_components=2)
 data_transformed = pca_model.fit_transform(X)
