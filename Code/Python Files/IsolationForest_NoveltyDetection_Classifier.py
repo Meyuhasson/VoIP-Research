@@ -15,9 +15,9 @@ y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #drop irrelevant for anomalous data features
 X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
-#scaler = MinMaxScaler()
-#X_scaled = scaler.fit_transform(X)
-
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
+'''
 parameters = {"n_estimators":[100, 90, 80, 70, 60, 55 ,50 ,45, 40, 35, 30, 20, 10, 5], "bootstrap":[True, False], "max_features":[1,2,3,4,5,6,7,8], "contamination" :[0.4, 0.35, 0.3, 0.25, 0.2, 0.15 ,0.1, 0.07 ,0.05, 0.03 ,0.01]}
 #clf = GridSearchCV(isof, parameters, scoring="accuracy", cv=5, n_jobs = -1)
 
@@ -46,8 +46,11 @@ print(best_params)
 print(X)
 print("hey")
 '''
+#the parameters achieved by run the algorithm above between ''' notes for best params finding
 isof = IsolationForest(n_estimators=100, contamination=0.05, max_features=2, bootstrap=False)
 isof.fit(X_scaled[:-6])
 print(isof.predict(X_scaled))
+print(len(isof.predict(X_scaled)))
+print(sum(isof.predict(X_scaled)))
 
-'''
+
