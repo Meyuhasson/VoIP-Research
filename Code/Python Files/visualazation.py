@@ -3,12 +3,22 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
 import DS_utils
+import seaborn as sns
+
 
 PROCESSED_FEATURES_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\processed_features_for_train.csv"
 
 # I dropped suspicious_diff feature, just because it's boolean not numeric, somtime it will be good practic to find a way to transfer it also to the network.
 data = pd.read_csv(PROCESSED_FEATURES_PATH).drop([r"Unnamed: 0"], axis=1)
+
+corr_matrix = data.corr()
+plt.figure(figsize=(20,15))
+sns.heatmap(corr_matrix, annot=True)
+plt.show()
+
+
 X = data.drop("isMalicious", axis=1)
 y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 

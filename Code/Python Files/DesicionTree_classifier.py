@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn import tree
 from sklearn.model_selection import train_test_split
 from matplotlib import pyplot as plt
-
+import seaborn as sns
 
 PROCESSED_FEATURES_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\processed_features_for_train.csv"
 
@@ -21,6 +21,7 @@ _ = tree.plot_tree(clf,
                    class_names= ["Malicious", "Benign"],
                    filled=True)
 plt.show()
+
 
 
 """
