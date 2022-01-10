@@ -20,16 +20,16 @@ y = data.drop(data.columns.difference(["isMalicious"]), axis=1)
 #drop irrelevant for anomalous data features
 X = X.drop(["Lost_packets_count", "RTP_payload_length", "original_sr", "suspicious_diff", "Lost_packets_precentage", "min_magnitude1", "min_magnitude2", "min_magnitude3"], axis=1)
 
-#scaler = MinMaxScaler()
-#X_scaled = scaler.fit_transform(X)
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
 
-model = OneClassSVM(kernel='rbf')
+model = OneClassSVM(kernel='linear', nu =0.9, gamma='scale')
 #train over benign data
-model.fit(X[:-50])
+model.fit(X_scaled[:-50])
 
 #pred the test case with benign and malicious data
-decision_function_score = model.decision_function(X[-50:])
-pred = model.predict(X[-50:])
+decision_function_score = model.decision_function(X_scaled[-50:])
+pred = model.predict(X_scaled[-50:])
 
 
 
