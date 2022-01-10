@@ -48,8 +48,8 @@ print("hey")
 '''
 #the parameters achieved by run the algorithm above between ''' notes for best params finding
 isof = IsolationForest(n_estimators=100, contamination=0.05, max_features=2, bootstrap=False)
-isof.fit(X_scaled[:-6])
-print(isof.predict(X_scaled))
+isof.fit(X_scaled[:-100])
+print(isof.predict(X_scaled[-100:]))
 print(len(isof.predict(X_scaled)))
 print(sum(isof.predict(X_scaled)))
 
