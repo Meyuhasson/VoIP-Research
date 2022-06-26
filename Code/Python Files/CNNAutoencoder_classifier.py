@@ -38,6 +38,7 @@ list_of_malicious_raw_data = []
 for file in list_of_malicious_files:
     f = open(file, "rb")
     #read and scale by 255 divition
+    print(file)
     list_of_malicious_raw_data.append(np.array(list(f.read(28*28))).reshape(28,28,1))
 
 list_of_benign_raw_data = np.array(list_of_benign_raw_data)/255
@@ -62,12 +63,12 @@ print(AE_model.summary())
 
 AE_model.compile("Adam", "mse")
 
-AE_model.fit(list_of_benign_raw_data[:-50], list_of_benign_raw_data[:-50], batch_size=6, epochs=100)
+AE_model.fit(list_of_benign_raw_data[:-74], list_of_benign_raw_data[:-74], batch_size=6, epochs=100)
 
-AE_output = AE_model.predict(np.concatenate((list_of_benign_raw_data[-50:] , list_of_malicious_raw_data)))
+AE_output = AE_model.predict(np.concatenate((list_of_benign_raw_data[-74:] , list_of_malicious_raw_data)))
 
-AE_deferences = sqrt((AE_output - np.concatenate((list_of_benign_raw_data[-50:] , list_of_malicious_raw_data)))**2)
-AE_df = pd.DataFrame(AE_deferences.reshape(62,28*28))
+AE_deferences = sqrt((AE_output - np.concatenate((list_of_benign_raw_data[-74:] , list_of_malicious_raw_data)))**2)
+AE_df = pd.DataFrame(AE_deferences.reshape(100,28*28))
 AE_df["grades"] = AE_df.apply(lambda row: np.linalg.norm(0 - row), axis=1)
 AE_df = AE_df.sort_values("grades")
 print(AE_df)

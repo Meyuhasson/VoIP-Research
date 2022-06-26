@@ -25,11 +25,11 @@ X_scaled = scaler.fit_transform(X)
 
 model = OneClassSVM(kernel='linear', nu =0.9, gamma='scale')
 #train over benign data
-model.fit(X_scaled[:-50])
+model.fit(X_scaled[:-100])
 
 #pred the test case with benign and malicious data
-decision_function_score = model.decision_function(X_scaled[-50:])
-pred = model.predict(X_scaled[-50:])
+decision_function_score = model.decision_function(X_scaled[-100:])
+pred = model.predict(X_scaled[-100:])
 
 
 

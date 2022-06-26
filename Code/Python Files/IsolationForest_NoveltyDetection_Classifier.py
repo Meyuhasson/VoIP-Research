@@ -29,8 +29,8 @@ for i in tqdm(parameters["n_estimators"]):
         for z in parameters["max_features"]:
             for w in parameters["bootstrap"]:
                 isof = IsolationForest(n_jobs=-1, n_estimators = i, contamination = j, max_features = z, bootstrap = w)
-                #isof.fit(X_scaled[:-6])
-                isof.fit(X[:-6])
+                #isof.fit(X_scaled[:-26])
+                isof.fit(X[:-26])
                 #X["isof_output" + " " + str(run)] = isof.predict(X_scaled)
                 X["isof_output" + " " + str(run)] = isof.predict(X)
                 if (min > (X["isof_output" + " " + str(run)] == -1).sum()):
@@ -47,7 +47,7 @@ print(X)
 print("hey")
 '''
 #the parameters achieved by run the algorithm above between ''' notes for best params finding
-isof = IsolationForest(n_estimators=100, contamination=0.05, max_features=2, bootstrap=False)
+isof = IsolationForest(n_estimators=100, contamination=0.01, max_features=2, bootstrap=False)
 isof.fit(X_scaled[:-100])
 print(isof.predict(X_scaled[-100:]))
 print(len(isof.predict(X_scaled)))
