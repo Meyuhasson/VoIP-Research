@@ -8,7 +8,7 @@ import DS_utils
 import seaborn as sns
 
 
-PROCESSED_FEATURES_PATH = r"C:\Users\edenm\Documents\GitHub\VoIP-Research\Data\features_extracted\processed_features_for_train.csv"
+PROCESSED_FEATURES_PATH = r"/Users/meyuhasson/dev/VoIP-Research/Data/features_extracted/processed_features_for_train.csv"
 
 # I dropped suspicious_diff feature, just because it's boolean not numeric, somtime it will be good practic to find a way to transfer it also to the network.
 data = pd.read_csv(PROCESSED_FEATURES_PATH).drop([r"Unnamed: 0"], axis=1)
@@ -69,12 +69,14 @@ data_transformed_inversed = pca_model.inverse_transform(data_transformed_inverse
 #plots
 DS_utils.plot_points_scatter(minmax_scaled, data, "minmax scaled")
 DS_utils.plot_points_scatter(minmax_scaled_inversed, data, "minmax scaled inversed")
-DS_utils.plot_points_scatter(data_droped, data, "original data")
-DS_utils.plot_points_scatter(data_droped_inversed, data, "original inversed data")
+DS_utils.plot_points_scatter(data_droped, data, "Data After Imputing")
+original_data_no_imputing = pd.read_csv("/Users/meyuhasson/dev/VoIP-Research/Data/features_extracted/extracted_datasets.csv")[:131].append(pd.read_csv("/Users/meyuhasson/dev/VoIP-Research/Data/features_extracted/extracted_datasets.csv")[549:]).index.values
+DS_utils.plot_points_scatter(data_droped.iloc[original_data_no_imputing], data.iloc[original_data_no_imputing], "Original Data Before Imputing")
+DS_utils.plot_points_scatter(data_droped_inversed, data, "Original Inversed Data")
 DS_utils.plot_points_scatter(standard_scaled, data, "standartscaler scaled")
 DS_utils.plot_points_scatter(standard_scaled_inversed, data, "standartscaler scaled inversed")
 DS_utils.plot_points_scatter(data_transformed, data, "after_PCA_transformed_and_inverse")
 DS_utils.plot_points_scatter(data_transformed_inversed, data, "after_PCA_transformed_and_inverse of inversed data")
 DS_utils.plot_points_scatter(df_temp, data, "generated and original uniform distributed data")
-DS_utils.plot_points_scatter(df_temp_normal, data, "generated and original normal distributed data")
+DS_utils.plot_points_scatter(df_temp_normal, data, "Original and Generated Data With a Normal Distributed")
 
